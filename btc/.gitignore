@@ -1,0 +1,9 @@
+task1/real-aws/terraform/.terraform/
+task1/real-aws/terraform/terraform.tfstate
+task1/real-aws/terraform/terraform.tfstate.backup
+task1/real-aws/terraform/terraform.tfvars
+
+task1/localstack/terraform/.terraform/
+task1/localstack/terraform/terraform.tfstate
+task1/localstack/terraform/terraform.tfstate.backup
+task1/localstack/terraform/terraform.tfvars

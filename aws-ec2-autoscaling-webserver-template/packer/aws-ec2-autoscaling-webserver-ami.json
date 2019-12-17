@@ -1,0 +1,31 @@
+{                                                                                                        
+    "variables": {                                                                                       
+        "aws_access_key": "",                                                                            
+        "aws_secret_key": "",                                                                            
+        "subnet_id": "",                                                                                 
+        "ansible_git_repo": ""                                                                           
+    },                                                                                                   
+                                                                                                         
+    "builders": [                                                                                        
+        {                                                                                                
+            "type": "amazon-ebs",                                                                        
+            "access_key": "{{user `aws_access_key`}}",                                                   
+            "secret_key": "{{user `aws_secret_key`}}",                                                   
+            "region": "ap-southeast-2",                                                                  
+            "subnet_id": "{{user `subnet_id` }}",                                                        
+            "source_ami": "ami-08bd00d7713a39e7d",                                                       
+            "instance_type": "t2.micro",                                                                 
+            "ssh_username": "centos",                                                                    
+            "ami_name": "aws-ec2-autoscaling-webserver-ami-{{timestamp}}"                                                
+        }                                                                                                
+    ],                                                                                                   
+                                                                                                         
+    "provisioners": [                                                                                    
+        {                                                                                                
+            "type": "ansible",                                                                           
+            "playbook_file": "../ansible/aws-ec2-autoscaling-webserver.yml",                             
+            "extra_arguments": [ "--extra-vars", "git_repo={{user `ansible_git_repo`}}" ]                
+        }                                                                                                
+    ]                                                                                                    
+                                                                                                         
+}
